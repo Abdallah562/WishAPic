@@ -1,0 +1,21 @@
+# .NET build/output
+**/bin/
+**/obj/
+
+# Frontend dependencies (exclude node_modules inside ClientApp)
+**/ClientApp/node_modules/
+
+# Sensitive data (use appsettings.Development.json instead)
+**/appsettings.json
+
+# IDE/User files
+.vs/
+.idea/
+*.user
+*.suo
+
+# Misc (HTTP client files, temp files)
+**/*.http
+**/response.json
+
+**/Feature Extraction API

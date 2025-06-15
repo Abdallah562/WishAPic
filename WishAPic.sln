@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishAPic", "WishAPic\WishAPic.csproj", "{2A0E6615-555B-4FA9-8934-C81707A45AEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32951402-00C1-4688-B1F4-D887C4CE49D1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A0E6615-555B-4FA9-8934-C81707A45AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0E6615-555B-4FA9-8934-C81707A45AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0E6615-555B-4FA9-8934-C81707A45AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0E6615-555B-4FA9-8934-C81707A45AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B77010DC-5232-4261-932E-686F2BDCD140}
+	EndGlobalSection
+EndGlobal
