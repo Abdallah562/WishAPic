@@ -1,0 +1,251 @@
+/* General Styling */
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+    background: #1e1e2f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #3b3b50;
+    border-radius: 6px;
+    background: #2b2b3a;
+    color: #ffffff;
+    transition: 0.3s;
+  }
+  .form-control::placeholder {
+    color: #8d8888;
+  }
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
+  .mb-2 {
+    margin-bottom: 12px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(135deg, #0056b3, #004092);
+  }
+  
+  /* Flexbox Layout */
+  .flex {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .flex-1 {
+    flex: 1;
+  }
+  
+  .loader {
+    margin-top: 30px ;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #009b53;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    animation: pulse 1s linear infinite;
+  }
+  .loader:after {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #0f51df;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 1s linear infinite;
+  }
+  
+  @keyframes scaleUp {
+    0% { transform: translate(-50%, -50%) scale(0) }
+    60% , 100% { transform: translate(-50%, -50%)  scale(1)}
+  }
+  @keyframes pulse {
+    0% , 60% , 100%{ transform:  scale(1) }
+    80% { transform:  scale(1.2)}
+  }
+  
+  /* Generated Image */
+  .generated-image {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    height: auto;
+  }
+
+  .image-container {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Space between the two divs */
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Adds spacing between divs */
+  }
+
+  .image-box {
+    flex: 1; /* Makes both divs take equal space */
+    max-width: 50%; /* Prevents them from becoming too wide */
+  }
+
+  /* Hover Download Button */
+.download-btn,
+.favorite-btn {
+  position: absolute;
+  bottom: 15px;
+  background: rgba(40, 167, 69, 0.8);
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.download-btn{
+  right: 15px;
+}
+.favorite-btn{
+  right: 60px;
+}
+.image-wrapper{
+  position: relative;
+}
+.image-wrapper:hover .download-btn,
+.image-wrapper:hover .favorite-btn  {
+  opacity: 1;
+}
+
+.download-btn:hover,
+.favorite-btn:hover {
+  background: #218838;
+  transform: scale(1.1);
+}
+
+/* Pop-up Modal - Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Darker background for focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Pop-up Modal - Content */
+.modal-content {
+  position: relative;
+  background: rgba(30, 30, 47, 0.9); /* Glassmorphism effect */
+  backdrop-filter: blur(12px);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-in-out;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Image Styling */
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 0, 0, 0.8);
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn:hover {
+  background: rgba(200, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

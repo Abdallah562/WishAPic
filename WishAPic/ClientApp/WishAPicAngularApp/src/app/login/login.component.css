@@ -1,0 +1,318 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Form Container */
+  .form-container {
+    display: flex;
+    background: #141414;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  .loginHeading{
+    text-align: left;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  /* Left Side - Image Section */
+  .login-image {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  
+  /* Right Side - Form Section */
+  form {
+    flex: 1;
+    padding: 50px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+  }
+  
+  /* Floating Placeholder Input */
+  .input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 18px 12px 10px 50px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid #3b3b50;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .input-container input:focus {
+    border-color: #9b78ff;
+    box-shadow: 0 0 8px rgba(155, 120, 255, 0.5);
+  }
+  
+  /* Floating Label */
+  .input-container label {
+    position: absolute;
+    top: 18px;
+    left: 50px;
+    font-size: 14px;
+    color: #a8a8c0;
+    pointer-events: none;
+    transition: 0.3s ease all;
+  }
+  
+  .input-container:focus-within label,
+  .input-container input:not(:placeholder-shown) + label {
+    top: 5px;
+    font-size: 12px;
+    color: #9b78ff;
+  }
+  
+  /* Input Icon */
+  .input-container .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .input-container .icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    height: 170%;
+    width: 2px;
+    background-color: #54547a;
+  }
+  
+  /* Error Message */
+  .text-red {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Remember Me + Forgot Password */
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 15px;
+  }
+  
+  /* Toggle Switch */
+  .toggle-switch {
+    position: relative;
+    width: 34px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #555;
+    border-radius: 34px;
+    transition: 0.3s;
+  }
+  
+  .toggle-switch input:checked + .slider {
+    background: #9b78ff;
+  }
+  
+  .toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  .toggle-switch input:checked + .slider::before {
+    transform: translateX(14px);
+  }
+  
+  /* Login Button */
+  .button-green-back {
+    width: 100%;
+    background: linear-gradient(135deg, #a855f7, #6b46c1);
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .button-green-back:hover {
+    opacity: 0.85;
+  }
+  
+  /* Separator */
+  .separator {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    position: relative;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 1px;
+    background: #444;
+    position: absolute;
+    top: 50%;
+  }
+  
+  .separator::before {
+    left: 0;
+  }
+  
+  .separator::after {
+    right: 0;
+  }
+  
+  /* Social Login */
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #555;
+    margin: 10px 0;
+    transition: 0.3s;
+    color: white;
+  }
+  
+  .social-btn img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .google-btn {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  .google-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Register Link */
+  .register-link {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  .register-link a {
+    color: #9b78ff;
+    text-decoration: none;
+  }
+  .link {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(135deg, #a855f7, #6b46c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .link:hover {
+    background: linear-gradient(135deg, #6b46c1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+  }
+  /* Options Container */
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 15px;
+  }
+  
+  /* Remember Me Section */
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between switch and text */
+  }
+  
+  /* Remember Me Text */
+  .remember-text {
+    font-size: 14px;
+    color: #ddd; /* Lighter text for better visibility */
+  }
+  
+  /* Gradient Forgot Password Link */
+  .gradient-link {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(135deg, #a855f7, #6b46c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .gradient-link:hover {
+    background: linear-gradient(135deg, #6b46c1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+  }

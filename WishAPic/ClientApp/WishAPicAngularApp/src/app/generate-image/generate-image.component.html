@@ -1,0 +1,84 @@
+<!-- <div class="container">
+  <h2>Generate AI Image</h2>
+  <div class="flex">
+    <div class="flex-1"><input [(ngModel)]="brandName" placeholder="Enter Brand Name..." class="form-control mb-2" /></div>
+    <div class="flex-1"><input [(ngModel)]="brandStyle" placeholder="Enter Brand Style..." class="form-control mb-2" /></div>
+  </div>
+  <input [(ngModel)]="prompt" placeholder="Enter prompt..." class="form-control mb-2" />
+  <button (click)="generateImage()" class="btn btn-primary mb-2">Generate</button>
+
+  <div *ngIf="imageUrl">
+    <h3>Generated Image:</h3>
+    <img [src]="imageUrl" alt="Generated Image" class="img-fluid" />
+  </div>
+  <button type="button" class="button button-blue-back mt"
+  (click)="refreshClicked()">Refresh</button>
+</div> -->
+
+<div class="container">
+  <h2>Generate AI Image</h2>
+
+  <div class="flex">
+    <div class="flex-1">
+      <input [(ngModel)]="brandName" placeholder="Enter Brand Name..." class="form-control mb-2" />
+    </div>
+    <div class="flex-1">
+      <input [(ngModel)]="brandStyle" placeholder="Enter Brand Style..." class="form-control mb-2" />
+    </div>
+  </div>
+
+  <input [(ngModel)]="prompt" placeholder="Enter prompt..." class="form-control mb-2" />
+  <button (click)="generateImage()" class="btn mb-2">Generate</button>
+
+  <div class="loader-container" *ngIf="isLoading">
+    <span class="loader"></span>
+    <p class="loading-text">Please wait while your image is being created...</p>
+  </div>
+
+
+  <!-- Generated Image -->
+  <div class="image-container">
+    <div *ngIf="generatedImage" class="image-box">
+      <h3>Generated Image:</h3>
+      <!-- Image with Click to Open Modal -->
+      <div class="image-wrapper" (click)="openModal()">
+        <img [src]="generatedImage.image" alt="Generated Image" class="generated-image" />
+        <button (click)="addToFavorites($event)" class="favorite-btn" title="Add to Favorites">
+          <i class="fa fa-heart"></i>
+        </button>
+        <!-- Hover Download Button -->
+        <button (click)="downloadImage($event)" class="download-btn" title="Download Image">
+          <i class="fa fa-download"></i>
+        </button>
+      </div>
+    </div>
+
+      <!-- Pop-up Modal -->
+    <div *ngIf="isModalOpen" class="modal-overlay" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="closeModal()">×</button>
+        <!-- <img [src]="imageUrl.src" alt="Full Image" class="modal-image" /> -->
+        <img *ngIf="generatedImage" [src]="generatedImage.image" alt="Full Image" class="modal-image" />
+      </div>
+    </div>
+  
+
+    <div *ngIf="imagesData !== null">
+      <div *ngIf="imagesData!.length > 0; else noImages" class="image-box">
+        <h2>Similar Images:</h2>
+        <div *ngFor="let imgData of imagesData.slice(1)">
+          <img [src]="imgData.image" [alt]="'Image'" width="200" />
+        </div>
+
+      </div>
+      <ng-template #noImages>
+          <h4>No Items Found</h4>
+      </ng-template>
+    </div>
+
+  </div>
+
+  <!-- <ng-template #noImages>
+    <p>No images found.</p>
+  </ng-template> -->
+</div>

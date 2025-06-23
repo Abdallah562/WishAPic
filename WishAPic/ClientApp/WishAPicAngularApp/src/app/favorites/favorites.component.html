@@ -1,0 +1,13 @@
+<div *ngIf="imageData !== null && imageData!.length > 0; else noImages" class="image-box">
+    <h2>History:</h2>
+    <div *ngFor="let img of imageData">
+      <img [src]="img.image" [alt]="'Image'" />
+      <div class="flex-1">
+            <button *ngIf="!img.isFavorite" (click)="onRemoveFromFavoritesClicked(img)">Remove from Favorites</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noImages>
+    <h3>No images found.</h3>
+  </ng-template>

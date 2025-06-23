@@ -1,0 +1,228 @@
+<!-- <div class="w-75 margin-auto">
+    <div class="form-container">
+          <h2>Register</h2>
+          
+          <form [formGroup]="registerForm" 
+          (ngSubmit)="registerSubmitted()"> -->
+
+<!-- fullName -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="fullName" class="form-label pt">Full Name</label>
+                </div>
+                <div class="flex-1">
+                    <input type="text" id="fullName" class="form-input"
+                    formControlName="fullName"/>
+                    <span class="text-red" *ngIf="(register_fullNameControl.touched || 
+                        isRegisterFormSubmitted) && (register_fullNameControl.errors?.
+                        ['required'])">Full Name can't be blank</span>
+                </div>
+            </div> -->
+
+<!-- email -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="email" class="form-label pt">Email</label>
+                </div>
+                <div class="flex-1">
+                    <input type="text" id="email" class="form-input"
+                    formControlName="email"/>
+                    <span class="text-red" *ngIf="(register_emailControl.touched || 
+                        isRegisterFormSubmitted) && (register_emailControl.errors?.
+                        ['required'])">Email can't be blank</span>
+
+                    <span class="text-red" *ngIf="(register_emailControl.touched || 
+                    isRegisterFormSubmitted) && (register_emailControl.errors?.
+                    ['email'])">Email should be in a proper email address format</span>
+                </div>
+            </div> -->
+
+<!-- phoneNumber -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="phoneNumber" class="form-label pt">Phone Number</label>
+                </div>
+                <div class="flex-1">
+                    <input type="text" id="phoneNumber" class="form-input"
+                    formControlName="phoneNumber"/>
+                    <span class="text-red" *ngIf="(register_phoneNumberControl.touched || 
+                        isRegisterFormSubmitted) && (register_phoneNumberControl.errors?.
+                        ['required'])">Phone Number can't be blank</span>
+                </div>
+            </div> -->
+
+<!-- password -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="password" class="form-label pt">Password</label>
+                </div>
+                <div class="flex-1">
+                    <input type="password" id="password" class="form-input"
+                    formControlName="password"/>
+                    <span class="text-red" *ngIf="(register_passwordControl.touched || 
+                        isRegisterFormSubmitted) && (register_passwordControl.errors?.
+                        ['required'])">Password can't be blank</span>
+                </div>
+            </div> -->
+
+<!-- confirmPassword -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="confirmPassword" class="form-label pt">Confirm Password</label>
+                </div>
+                <div class="flex-1">
+                    <input type="password" id="confirmPassword" class="form-input"
+                    formControlName="confirmPassword"/>
+                    <span class="text-red" *ngIf="(register_confirmPasswordControl.touched || 
+                        isRegisterFormSubmitted) && (register_confirmPasswordControl.errors?.
+                        ['required'])">Confirm Password can't be blank</span>
+
+                    <span class="text-red" *ngIf="(register_confirmPasswordControl.touched || 
+                    isRegisterFormSubmitted) && (register_confirmPasswordControl.errors?.
+                    ['compareValidator'])">Password and Confirm Password doesn't match</span>
+                        
+                </div>
+            </div> -->
+
+<!-- submit -->
+<!-- <div class="form-field flex">
+                <div class="w-25">
+                </div>
+
+                <div class="flex-1">
+                    <button type="submit" class="button button-green-back">Register</button>
+                </div>
+            </div>            
+
+
+        </form>
+    </div>
+</div> -->
+
+<div class="margin-auto">
+  <div class="form-container">
+    <!-- Left Side (Form Section) -->
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmitted()">
+      <div class="registerHeading">
+        <h2>Create Account</h2>
+        <p>Fill in the details to sign up</p>
+      </div>
+
+      <!-- Full Name -->
+      <div class="flex">
+        <div class="flex-1">
+          <div
+            class="input-container"
+            [ngClass]="{'error': (register_fullNameControl.touched || isRegisterFormSubmitted) && register_fullNameControl.errors?.['required']}"
+          >
+            <i class="fas fa-user icon"></i>
+            <input
+              type="text"
+              id="fullName"
+              class="form-input"
+              formControlName="fullName"
+              placeholder=" "
+              required
+            />
+            <label for="fullName">Full Name</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="flex">
+        <div class="flex-1">
+          <div
+            class="input-container"
+            [ngClass]="{'error': (register_emailControl.touched || isRegisterFormSubmitted) && (register_emailControl.errors?.['required'] || register_emailControl.errors?.['email'])}"
+          >
+            <i class="fas fa-envelope icon"></i>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              formControlName="email"
+              placeholder=" "
+              required
+            />
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <!-- <div class="form-field flex">
+          <div class="flex-1">
+            <div class="input-container"
+              [ngClass]="{'error': (register_phoneNumberControl.touched || isRegisterFormSubmitted) && register_phoneNumberControl.errors?.['required']}">
+              <i class="fas fa-phone icon"></i>
+              <input type="text" id="phoneNumber" class="form-input" formControlName="phoneNumber" placeholder=" "
+                required>
+              <label for="phoneNumber">Phone Number</label>
+            </div>
+          </div>
+        </div> -->
+
+      <!-- Password -->
+      <div class="flex">
+        <div class="flex-1">
+          <div
+            class="input-container"
+            [ngClass]="{'error': (register_passwordControl.touched || isRegisterFormSubmitted) && register_passwordControl.errors?.['required']}"
+          >
+            <i class="fas fa-lock icon"></i>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              formControlName="password"
+              placeholder=" "
+              required
+            />
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="flex">
+        <div class="flex-1">
+          <div
+            class="input-container"
+            [ngClass]="{'error': (register_confirmPasswordControl.touched || isRegisterFormSubmitted) &&
+                      (register_confirmPasswordControl.errors?.['required'] || register_confirmPasswordControl.errors?.['compareValidator'])}"
+          >
+            <i class="fas fa-lock icon"></i>
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-input"
+              formControlName="confirmPassword"
+              placeholder=" "
+              required
+            />
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+        </div>
+      </div>
+      <div class="separator">Or</div>
+
+      <!-- Social Login Buttons -->
+      <button class="social-btn google-btn">
+        <img src="assets/google-logo.png" alt="Google" /> Google
+      </button>
+      <!-- Submit Button -->
+      <button type="submit" class="button button-green-back">Register</button>
+
+      <p class="register-link">
+        Already have an account?
+        <a [routerLink]="['/login']">Login</a>
+      </p>
+    </form>
+
+    <!-- Right Side (Image Section) -->
+    <div class="register-image">
+      <img src="assets/registerBG.jpg" alt="Register Image" />
+    </div>
+  </div>
+</div>

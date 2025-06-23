@@ -1,0 +1,124 @@
+<!-- <div class="w-75 margin-auto">
+    <div class="form-container">
+          <h2>Login</h2>
+          
+          <form [formGroup]="loginForm" 
+          (ngSubmit)="loginSubmitted()"> -->
+
+            <!-- email -->
+            <!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="email" class="form-label pt">Email</label>
+                </div>
+                <div class="flex-1">
+                    <input type="text" id="email" class="form-input"
+                    formControlName="email"/>
+                    <span class="text-red" *ngIf="(login_emailControl.touched || 
+                        isLoginFormSubmitted) && (login_emailControl.errors?.
+                        ['required'])">Email can't be blank</span>
+                </div>
+            </div> -->
+
+            <!-- password -->
+            <!-- <div class="form-field flex">
+                <div class="w-25">
+                    <label for="password" class="form-label pt">Password</label>
+                </div>
+                <div class="flex-1">
+                    <input type="password" id="password" class="form-input"
+                    formControlName="password"/>
+                    <span class="text-red" *ngIf="(login_passwordControl.touched || 
+                        isLoginFormSubmitted) && (login_passwordControl.errors?.
+                        ['required'])">Password can't be blank</span>
+                </div>
+            </div>
+        -->
+            <!-- submit -->
+            <!-- <div class="form-field flex">
+                <div class="w-25">
+                </div>
+
+                <div class="flex-1">
+                    <button type="submit" class="button button-green-back">Login</button>
+                </div>
+            </div>            
+
+
+        </form>
+    </div>
+</div> -->
+
+<div class="margin-auto">
+    <div class="form-container">
+      <!-- Left Side (Image Section) -->
+      <div class="login-image">
+        <img src="assets/loginBG.jpg" alt="Login Image">
+      </div>
+  
+      <!-- Right Side (Form Section) -->
+      <form [formGroup]="loginForm" (ngSubmit)="loginSubmitted()">
+        <div class="loginHeading">
+          <h2>Welcome Back!</h2>
+          <p>Please enter your email and password</p>
+        </div>
+  
+        <!-- Email -->
+        <div class="form-field flex">
+          <div class="flex-1">
+            <div class="input-container">
+              <i class="fas fa-envelope icon"></i>
+              <input type="email" id="email" class="form-input" formControlName="email" placeholder=" " required>
+              <label for="email">Email</label>
+            </div>
+            <span class="text-red"
+              *ngIf="(login_emailControl.touched || isLoginFormSubmitted) && login_emailControl.errors?.['required']">
+              Email can't be blank
+            </span>
+          </div>
+        </div>
+  
+        <!-- Password -->
+        <div class="form-field flex">
+          <div class="flex-1">
+            <div class="input-container">
+              <i class="fas fa-lock icon"></i>
+              <input type="password" id="password" class="form-input" formControlName="password" placeholder=" " required>
+              <label for="password">Password</label>
+            </div>
+            <span class="text-red"
+              *ngIf="(login_passwordControl.touched || isLoginFormSubmitted) && login_passwordControl.errors?.['required']">
+              Password can't be blank
+            </span>
+          </div>
+        </div>
+  
+        <!-- Remember Me + Forgot Password -->
+        <div class="options">
+          <div class="remember-me">
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+            <span class="remember-text">Remember me</span>
+          </div>
+          <a [routerLink]="['/register']" class="gradient-link">Forgot Password?</a>
+        </div>
+  
+  
+        <!-- Submit -->
+        <button type="submit" class="button button-green-back">Login</button>
+        <div class="separator">Or</div>
+  
+        <!-- Social Login Buttons -->
+        <button class="social-btn google-btn">
+          <img src="assets/google-logo.png" alt="Google"> Google
+        </button>
+  
+        <p class="register-link">
+          Don't have an account?
+          <a [routerLink]="['/register']">Create Account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
