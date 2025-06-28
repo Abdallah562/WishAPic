@@ -19,43 +19,55 @@ namespace WishAPic.Controllers
         private readonly ILogger<ImagesController> _logger;
         private readonly IImagesAdderService _imagesAdderService;
         private readonly IImagesGetterService _imagesGetterService;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IImagesDeleterService _imagesDeleterService;
         public ImagesController(ILogger<ImagesController> logger, IImagesAdderService imagesAdderService,
-            IImagesGetterService imagesGetterService, IImagesDeleterService imagesDeleterService)
+            IImagesGetterService imagesGetterService, IImagesDeleterService imagesDeleterService, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _imagesAdderService = imagesAdderService;
             _imagesGetterService = imagesGetterService;
             _imagesDeleterService = imagesDeleterService;
+            _userManager = userManager;
         }
 
         [HttpPost("AddToFavorites")]
-        public ActionResult<ImageData> AddToFavorites([FromBody] ImageDataDTO imageData)
+        public async Task<ActionResult<ImageData>> AddToFavoritesAsync([FromBody] ImageDataDTO imageDataDto)
         {
-            if (imageData == null)
+            if (imageDataDto == null)
                 return Problem("Image Data is Null");
-            _logger.LogError("AddToFavorites");
 
+            var imageData = await _imagesGetterService.FindByIdAsync(imageDataDto.Id);
 
-            ImageData image = new ImageData
-            {
-                ImageId = imageData.Id,
-                UserId = imageData.UserId,
-                Prompt = imageData.Prompt,
-                IsFavorite = true,
-                Image = Convert.FromBase64String(imageData.Image
-                    .Substring(imageData.Image.IndexOf(",") + 1))
-            };
-            _imagesAdderService.AddToFavorites(image);
-            _logger.LogError(image.ToString());
+            if (imageData == null)
+                return NotFound("Image Not Found");
 
-            return Ok();
+            //ImageData image = new ImageData
+            //{
+            //    ImageId = imageDataDto.Id,
+            //    UserId = imageDataDto.UserId,
+            //    Prompt = imageDataDto.Prompt,
+            //    IsFavorite = true,
+            //    Image = Convert.FromBase64String(imageDataDto.Image
+            //        .Substring(imageDataDto.Image.IndexOf(",") + 1))
+            //};
+            _imagesAdderService.AddToFavorites(imageData);
+
+            return Ok(imageData);
         }
         [HttpGet("GetFavorites")]
         public async Task<IActionResult> GetFavoritesAsync(Guid userId)
         {
+            ApplicationUser? user = await _userManager.FindByIdAsync(userId.ToString());
+            
+            if (user == null)
+                return NotFound("User Not Found");
 
-            var images = (await _imagesGetterService.GetFavorites(userId)).Select(imgData => new
+            var images = await _imagesGetterService.GetFavorites(userId);
+            if (images.Count() == 0)
+                return NotFound("No Items in Favorites");
+
+            var favoriteImages = images.Select(imgData => new
             {
                 imgData.ImageId,
                 imgData.UserId,
@@ -63,34 +75,46 @@ namespace WishAPic.Controllers
                 Image = File(imgData.Image, "image/png")
             });
 
-            return Ok(images);
+            return Ok(favoriteImages);
         }
         [HttpDelete("DeleteFromFavorites")]
         public async Task<IActionResult> DeleteFromFavoritesAsync(ImageDataDTO imageDataDTO)
         {
-            ImageData imageData = new ImageData
-            {
-                ImageId = imageDataDTO.Id,
-                UserId = imageDataDTO.UserId,
-                Prompt = imageDataDTO.Prompt,
-                Image = Convert.FromBase64String(imageDataDTO.Image
-                    .Substring(imageDataDTO.Image.IndexOf(",") + 1))
-            };
+            var imageData = await _imagesGetterService.FindByIdAsync(imageDataDTO.Id);
+            
+            if (imageData == null)
+                return NotFound("Image Not Found");
+            
+                
+            
+            //ImageData imageData = new ImageData
+            //{
+            //    ImageId = imageDataDTO.Id,
+            //    UserId = imageDataDTO.UserId,
+            //    Prompt = imageDataDTO.Prompt,
+            //    Image = Convert.FromBase64String(imageDataDTO.Image
+            //        .Substring(imageDataDTO.Image.IndexOf(",") + 1))
+            //};
             ImageData imgData = await _imagesDeleterService.DeleteFromFavorites(imageData);
             return Ok(imgData);
         }
 
         [HttpDelete("DeleteFromHistory")]
-        public IActionResult DeleteFromHistory(ImageDataDTO imageDataDTO)
+        public async Task<IActionResult> DeleteFromHistory(ImageDataDTO imageDataDTO)
         {
-            ImageData imageData = new ImageData
-            {
-                ImageId = imageDataDTO.Id,
-                UserId = imageDataDTO.UserId,
-                Prompt = imageDataDTO.Prompt,
-                Image = Convert.FromBase64String(imageDataDTO.Image
-                    .Substring(imageDataDTO.Image.IndexOf(",") + 1))
-            };
+            var imageData = await _imagesGetterService.FindByIdAsync(imageDataDTO.Id);
+
+            if (imageData == null)
+                return NotFound("Image Not Found");
+
+            //ImageData imageData = new ImageData
+            //{
+            //    ImageId = imageDataDTO.Id,
+            //    UserId = imageDataDTO.UserId,
+            //    Prompt = imageDataDTO.Prompt,
+            //    Image = Convert.FromBase64String(imageDataDTO.Image
+            //        .Substring(imageDataDTO.Image.IndexOf(",") + 1))
+            //};
             ImageData imgData = _imagesDeleterService.DeleteFromHistory(imageData);
             return Ok(imgData);
         }

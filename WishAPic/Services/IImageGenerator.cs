@@ -5,7 +5,6 @@ namespace WishAPic.Services
     public interface IImageGenerator
     {
         Task<List<ImageData>> Generate(PromptRequest request);
-        public bool IsBrandExist(string brandName);
 
     }
 }

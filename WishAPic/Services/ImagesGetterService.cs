@@ -1,5 +1,6 @@
 ﻿using WishAPic.Controllers;
 using WishAPic.Data;
+using WishAPic.Identity;
 using WishAPic.Models;
 using WishAPic.ServiceContracts;
 
@@ -15,6 +16,10 @@ namespace WishAPic.Services
         {
             _context = context;
             _logger = logger;
+        }
+        public async Task<ImageData> FindByIdAsync(Guid imageId)
+        {
+            return await _context.Images.FindAsync(imageId);
         }
 
         public async Task<List<ImageData>> GetAllImages(Guid userId)

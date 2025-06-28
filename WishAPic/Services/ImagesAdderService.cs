@@ -17,24 +17,12 @@ namespace WishAPic.Services
             _context = context;
             _logger = logger;
         }
-        public void savePictures()
-        {
-            var images = _context.Images;
-            int cnt = 1;
-            foreach (var item in images)
-            {
-                string fileName = $"image_{cnt++}.jpg";
-
-                File.WriteAllBytes(fileName, item.Image);
-            }
-        }
 
         public async Task<ImageData> AddImage(ImageData imageData)
         {
             await _context.AddAsync(imageData);
             _context.SaveChanges();
-            //_logger.LogError(imageData.ToString());
-            //savePictures();
+
             return imageData;
         }
 
